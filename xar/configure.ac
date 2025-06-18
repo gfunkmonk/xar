@@ -120,6 +120,7 @@ dnl
 dnl Define cpp macros in CPPFLAGS, rather than doing AC_DEFINE(macro), since the
 dnl definitions need to be seen before and headers are included, which is a pain
 dnl to make happen otherwise.
+AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
 case "${host}" in
   *-*-darwin*)
