@@ -377,8 +377,10 @@ xar_signature_t xar_signature_unserialize(xar_t x, xmlTextReaderPtr reader)
 												sig_data = xar_from_base64(value, (unsigned)strlen((const char *)value), &outputLength);
 												
 												/* for convience we just use the same method, which means multiple allocations */
-												xar_signature_add_x509certificate(ret, sig_data, outputLength);
-												free(sig_data);
+												if (sig_data) {
+													xar_signature_add_x509certificate(ret, sig_data, outputLength);
+													free(sig_data);
+												}
 
 												value = NULL; /* We don't want to accidentally release this const. */
 												/*break;*/
